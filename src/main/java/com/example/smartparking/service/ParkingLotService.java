@@ -14,8 +14,12 @@ import java.util.Objects;
 public class ParkingLotService {
     private final List<ParkingSpot> spots = new ArrayList<>();
 
-    public ParkingLotService() {
-        for (int i = 1; i <= 20; i++) {
+    @Value("${value.totalspots}")
+    private int totalSpots;
+
+    @PostConstruct
+    private void init() {
+        for (int i = 1; i <= totalSpots; i++) {
             spots.add(new ParkingSpot(i));
         }
     }
